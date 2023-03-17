@@ -1,40 +1,29 @@
 import React from "react";
 import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "react-native";
 
 export const LoginScreen = () => {
-  const navigation = useNavigation();
-
-  const handlePress = () => {
-    navigation.navigate("Home");
-  };
   return (
-    <View className='bg-white h-screen'>
-      <Image
-        source={require("../assets/undraw_Financial_data_re_p0fl.png")}
-        className='w-full h-60'
-      />
-      <Text className='text-3xl text-center text-blue-700 pt-5'>
-        Inicia sesion
+    <View className='bg-white h-screen flex items-center'>
+      <StatusBar />
+      <View className='bg-yellow-400 w-11/12 h-3/6 rounded-3xl mt-4'></View>
+
+      <Text className='text-black font-extrabold text-2xl'>
+        Run your business better
+      </Text>
+      <Text>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ipsum ad
+        ratione molestias sint id! Odio impedit eum, atque molestias quidem
+        perspiciatis reprehenderit magnam, quasi aliquam dolorum voluptatibus
+        adipisci suscipit.
       </Text>
 
-      <TextInput
-        className=' bg-blue-700 w-80 h-16 mx-auto text-white rounded-xl pl-5 mt-3'
-        placeholder='Usuario'
-        placeholderTextColor={"#fff"}
-      />
-      <TextInput
-        secureTextEntry
-        className=' bg-blue-700 w-80 h-16 mx-auto text-white rounded-xl pl-5 mt-6'
-        placeholder='Contrasena'
-        placeholderTextColor={"#fff"}
-      />
-
-      <TouchableOpacity
-        onPress={handlePress}
-        className='flex justify-center items-center mx-auto mt-6 bg-blue-500 w-48 h-14 rounded-full'
-      >
-        <Text className='text-xl text-white'>Ingresar</Text>
+      <TouchableOpacity>
+        <Text>Sign in</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text>Register</Text>
       </TouchableOpacity>
     </View>
   );
