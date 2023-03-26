@@ -54,12 +54,14 @@ export const LoginScreen = () => {
         <TouchableOpacity className="flex flex-row items-center justify-around w-32  sm:justify-center">
           <Image
             source={require('../assets/img/Googlelogo.png')}
-            style={{ width: 24, height: 24 }}
+            className="w-55 h-55"
           />
         </TouchableOpacity>
         <TouchableOpacity className="flex flex-row items-center justify-around w-32 sm:justify-center">
-          <FontAwesome5 name="facebook" size={24} color="white" />
-          <Text className="text-white text-lg">Facebook</Text>
+          <Image
+            source={require('../assets/img/Facbook.png')}
+            className="w-55 h-55"
+          />
         </TouchableOpacity>
       </View>
     </View>
