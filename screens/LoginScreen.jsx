@@ -51,16 +51,16 @@ export const LoginScreen = () => {
       </View>
 
       <View className="flex flex-row justify-between w-4/5 h-14 mt-8 ">
-        <TouchableOpacity className="flex flex-row items-center justify-around w-32  sm:justify-center">
+        <TouchableOpacity className="flex flex-row items-center justify-around rounded-full  w-20 h-20 bg-[#2E2E2E] sm:justify-center">
           <Image
             source={require('../assets/img/Googlelogo.png')}
-            className="w-55 h-55"
+            className="w-1/2 h-1/2"
           />
         </TouchableOpacity>
-        <TouchableOpacity className="flex flex-row items-center justify-around w-32 sm:justify-center">
+        <TouchableOpacity className="flex flex-row items-center justify-around w-20 h-20 sm:justify-center rounded-full bg-[#2E2E2E]">
           <Image
             source={require('../assets/img/Facbook.png')}
-            className="w-55 h-55"
+            className="w-1/2 h-1/2"
           />
         </TouchableOpacity>
       </View>
