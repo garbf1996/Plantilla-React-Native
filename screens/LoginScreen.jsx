@@ -34,11 +34,7 @@ export const LoginScreen = () => {
           </Text>
         </View>
 
-        <TouchableOpacity className="flex items-center justify-center bg-[#22D3EE] w-4/5 h-16 rounded-xl mt-2">
-          <Text className="text-lg font-bold text-white">Sign in</Text>
-        </TouchableOpacity>
-
-        <View className="flex flex-row justify-between items-center w-4/5 h-10 mt-4">
+        <View className="flex flex-row justify-between items-center w-4/5 h-14 mt-2 ">
           <LinearGradient
             colors={['#22D3EE', 'rgba(196, 196, 196, 0)']}
             className="w-20 h-1"
