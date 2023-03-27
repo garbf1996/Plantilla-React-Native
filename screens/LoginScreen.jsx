@@ -1,5 +1,5 @@
 import { TouchableOpacity } from 'react-native';
-import { Text, View, TextInput, Image, SafeAreaView } from 'react-native';
+import { Text, View, TextInput, SafeAreaView } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { Google } from '../assets/img/Google';
