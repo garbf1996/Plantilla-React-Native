@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
+import { Image } from 'react-native';
 
 export const Welcome = () => {
   const router = useNavigation();
@@ -15,15 +16,18 @@ export const Welcome = () => {
   return (
     <SafeAreaView>
       <StatusBar
-        style="dark"
+        style="light"
         animated={true}
         backgroundColor="#1E1E1E"
         networkActivityIndicatorVisible={true}
       />
       <View className="bg-black h-screen flex items-center">
         <StatusBar />
-        <View className="bg-[#1C1C1C] w-11/12 h-3/6 rounded-3xl mt-4  flex justify-center items-center">
-          <Text className="text-white font-bold text-3xl">Logo</Text>
+        <View className="bg-[#1C1C1C] w-80 h-80 rounded-3xl mt-4 flex justify-center items-center">
+          <Image
+            className="w-80 h-80 rounded-xl"
+            source={require('../assets/logo.png')}
+          />
         </View>
 
         <Text className="text-[#EDEDED] font-extrabold text-4xl mt-4 text-center">
