@@ -5,7 +5,7 @@ import 'react-native-gesture-handler';
 
 import { Welcome } from './Welcome';
 import { LoginScreen } from './LoginScreen';
-import { Dashborad } from './Dashborad';
+import { Dashboard } from './Dashborad';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -18,7 +18,7 @@ export const Main = () => {
     >
       <Screen name="Home" component={Welcome} />
       <Screen name="Login" component={LoginScreen} />
-      <Screen name="Dashboard" component={Dashborad} />
+      <Screen name="Dashboard" component={Dashboard} />
     </Navigator>
   );
 };
