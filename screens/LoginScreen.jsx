@@ -4,10 +4,17 @@ import { Text, View, TextInput, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Google } from '../assets/img/Google';
 import { Facebook } from '../assets/img/Facebook';
+import { StatusBar } from 'expo-status-bar';
 
 export const LoginScreen = () => {
   return (
     <SafeAreaView>
+      <StatusBar
+        style="dark"
+        animated={true}
+        backgroundColor="#1E1E1E"
+        networkActivityIndicatorVisible={true}
+      />
       <View className="bg-[#1E1E1E] h-screen flex items-center">
         <Text className="text-[#EDEDED]  text-4xl font-extrabold pt-10">
           Welcome Back
