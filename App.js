@@ -1,24 +1,21 @@
-import React from "react";
-import "react-native-gesture-handler";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { Fragment } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { StatusBar } from 'expo-status-bar';
 
-import { Welcome } from "./screens/Welcome";
-import { LoginScreen } from "./screens/LoginScreen";
+import { Main } from './screens/Main';
 
-const { Navigator, Screen } = createStackNavigator();
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Screen name='Home' component={Welcome} />
-        <Screen name='Login' component={LoginScreen} />
-      </Navigator>
-    </NavigationContainer>
+    <Fragment>
+      <StatusBar style="auto" />
+      <NavigationContainer>
+        <QueryClientProvider client={queryClient}>
+          <Main />
+        </QueryClientProvider>
+      </NavigationContainer>
+    </Fragment>
   );
 }

@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
-import { StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-//import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 
 export const Welcome = () => {
   const router = useNavigation();
@@ -9,9 +8,18 @@ export const Welcome = () => {
   const handleLogin = () => {
     router.navigate('Login');
   };
+  const handleRegister = () => {
+    router.navigate('Dashboard');
+  };
 
   return (
     <SafeAreaView>
+      <StatusBar
+        style="dark"
+        animated={true}
+        backgroundColor="#1E1E1E"
+        networkActivityIndicatorVisible={true}
+      />
       <View className="bg-black h-screen flex items-center">
         <StatusBar />
         <View className="bg-[#1C1C1C] w-11/12 h-3/6 rounded-3xl mt-4  flex justify-center items-center">
@@ -34,7 +42,10 @@ export const Welcome = () => {
           >
             <Text className="text-[#EDEDED] font-bold text-lg">Sign in</Text>
           </TouchableOpacity>
-          <TouchableOpacity className="flex justify-center items-center bg-[#F3F3F3] w-32 rounded-tr-2xl rounded-br-2xl ">
+          <TouchableOpacity
+            className="flex justify-center items-center bg-[#F3F3F3] w-32 rounded-tr-2xl rounded-br-2xl"
+            onPress={handleRegister}
+          >
             <Text className="font-bold text-lg text-[#232323]">Register</Text>
           </TouchableOpacity>
         </View>
