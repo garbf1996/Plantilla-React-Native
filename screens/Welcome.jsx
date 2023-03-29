@@ -18,10 +18,10 @@ export const Welcome = () => {
       <StatusBar
         style="light"
         animated={true}
-        backgroundColor="#1E1E1E"
+        backgroundColor="white"
         networkActivityIndicatorVisible={true}
       />
-      <View className="bg-black h-screen flex items-center">
+      <View className="bg-[#1E1E1E] h-screen flex items-center p-10">
         <StatusBar />
         <View className="bg-[#1C1C1C] w-80 h-80 rounded-3xl mt-4 flex justify-center items-center">
           <Image
