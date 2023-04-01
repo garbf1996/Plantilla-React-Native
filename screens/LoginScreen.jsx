@@ -1,12 +1,47 @@
-import { TouchableOpacity } from 'react-native';
-import { Text, View, TextInput, SafeAreaView } from 'react-native';
+import { useEffect, useState } from 'react';
+import {
+  Text,
+  View,
+  TextInput,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 
+import * as WebBrowser from 'expo-web-browser';
+import * as GoogleS from 'expo-auth-session/providers/google';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Google } from '../assets/img/Google';
 import { Facebook } from '../assets/img/Facebook';
 import { StatusBar } from 'expo-status-bar';
 
+WebBrowser.maybeCompleteAuthSession();
+
 export const LoginScreen = () => {
+  const [accessToken, setAccessToken] = useState(null);
+  const [user, setUser] = useState(null);
+  const [request, response, promptAsync] = GoogleS.useIdTokenAuthRequest({
+    clientId:
+      '872118237244-j3n28ufm4jnrik9fc60p45c0mbecm9q8.apps.googleusercontent.com',
+    iosClientId:
+      '872118237244-mk77jjva2nh75qbiqc8sfr3j1beqotnd.apps.googleusercontent.com',
+  });
+  useEffect(() => {
+    if (response?.type === 'success') {
+      setAccessToken(response.authentication.accessToken);
+      accessToken && fecthUserInfo();
+    }
+  }, [response, accessToken]);
+
+  async function fecthUserInfo() {
+    const userInfoResponse = await fetch(
+      'https://www.googleapis.com/userinfo/v2/me',
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    );
+    setUser(await userInfoResponse.json());
+  }
+
   return (
     <SafeAreaView>
       <StatusBar
@@ -62,7 +97,12 @@ export const LoginScreen = () => {
         </View>
 
         <View className="flex flex-row justify-between w-3/6 h-16 mt-7">
-          <TouchableOpacity className="flex flex-row items-center justify-around w-16 h-16 rounded-full sm:justify-center bg-[#2E2E2E] border-2 border-[#505050]">
+          <TouchableOpacity
+            onPress={() => {
+              promptAsync();
+            }}
+            className="flex flex-row items-center justify-around w-16 h-16 rounded-full sm:justify-center bg-[#2E2E2E] border-2 border-[#505050]"
+          >
             <Google height={40} width={40} />
           </TouchableOpacity>
           <TouchableOpacity className="flex flex-row items-center justify-around w-16 h-16 rounded-full sm:justify-center bg-[#2E2E2E] border-2 border-[#505050]">

@@ -21,7 +21,7 @@ export const Welcome = () => {
         backgroundColor="white"
         networkActivityIndicatorVisible={true}
       />
-      <View className="bg-[#1E1E1E] h-screen flex items-center p-10">
+      <View className="bg-[#1E1E1E] h-screen flex items-center pt-2">
         <StatusBar />
         <View className="bg-[#1C1C1C] w-80 h-80 rounded-3xl mt-4 flex justify-center items-center">
           <Image
