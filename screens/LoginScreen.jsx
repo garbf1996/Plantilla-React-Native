@@ -7,40 +7,53 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import * as WebBrowser from 'expo-web-browser';
-import * as GoogleS from 'expo-auth-session/providers/google';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Google } from '../assets/img/Google';
 import { Facebook } from '../assets/img/Facebook';
 import { StatusBar } from 'expo-status-bar';
+import * as WebBrowser from 'expo-web-browser';
+import * as Googles from 'expo-auth-session/providers/google';
+import { makeRedirectUri } from 'expo-auth-session';
 
 WebBrowser.maybeCompleteAuthSession();
 
 export const LoginScreen = () => {
-  const [accessToken, setAccessToken] = useState(null);
-  const [user, setUser] = useState(null);
-  const [request, response, promptAsync] = GoogleS.useIdTokenAuthRequest({
-    clientId:
-      '872118237244-j3n28ufm4jnrik9fc60p45c0mbecm9q8.apps.googleusercontent.com',
+  const [token, setToken] = useState('');
+  const [userInfo, setUserInfo] = useState(null);
+
+  const [request, response, promptAsync] = Googles.useAuthRequest({
+    androidClientId:
+      '872118237244-t8m8s5duq9m4kjrdvtdtntr4hq63m2ao.apps.googleusercontent.com',
     iosClientId:
       '872118237244-mk77jjva2nh75qbiqc8sfr3j1beqotnd.apps.googleusercontent.com',
+    expoClientId:
+      '872118237244-j3n28ufm4jnrik9fc60p45c0mbecm9q8.apps.googleusercontent.com',
+    redirectUri: makeRedirectUri({ scheme: 'myapp' }),
   });
+
   useEffect(() => {
     if (response?.type === 'success') {
-      setAccessToken(response.authentication.accessToken);
-      accessToken && fecthUserInfo();
+      setToken(response.authentication.accessToken);
+      getUserInfo();
     }
-  }, [response, accessToken]);
+  }, [response, token]);
 
-  async function fecthUserInfo() {
-    const userInfoResponse = await fetch(
-      'https://www.googleapis.com/userinfo/v2/me',
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
-    setUser(await userInfoResponse.json());
-  }
+  const getUserInfo = async () => {
+    try {
+      const response = await fetch(
+        'https://www.googleapis.com/userinfo/v2/me',
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      const user = await response.json();
+      console.log(user);
+      setUserInfo(user);
+    } catch (error) {
+      // Add your own error handler here
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -98,9 +111,8 @@ export const LoginScreen = () => {
 
         <View className="flex flex-row justify-between w-3/6 h-16 mt-7">
           <TouchableOpacity
-            onPress={() => {
-              promptAsync();
-            }}
+            onPress={() => promptAsync()}
+            disabled={!request}
             className="flex flex-row items-center justify-around w-16 h-16 rounded-full sm:justify-center bg-[#2E2E2E] border-2 border-[#505050]"
           >
             <Google height={40} width={40} />

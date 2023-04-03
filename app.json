@@ -2,12 +2,15 @@
   "expo": {
     "name": "plantillaTailwind",
     "slug": "plantillaTailwind",
+    "scheme": "myapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "currentFullName": "@edwinespi18/plantillaTailwind",
+    "originalFullName": "@edwinespi18/plantillaTailwind",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,6 +28,17 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "19621f8e-67d6-4ad3-94d2-7782b822f23a"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/19621f8e-67d6-4ad3-94d2-7782b822f23a"
     }
   }
 }
