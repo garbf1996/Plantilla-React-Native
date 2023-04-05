@@ -11,10 +11,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Google } from '../assets/img/Google';
 import { Facebook } from '../assets/img/Facebook';
 import { StatusBar } from 'expo-status-bar';
-
+import { useNavigation } from '@react-navigation/native';
 // WebBrowser.maybeCompleteAuthSession();
 
 export const LoginScreen = () => {
+  const useRouter = useNavigation();
   // const [token, setToken] = useState('');
   // const [userInfo, setUserInfo] = useState(null);
 
@@ -86,7 +87,12 @@ export const LoginScreen = () => {
           </Text>
         </View>
 
-        <TouchableOpacity className="flex items-center justify-center bg-[#22D3EE] w-4/5 h-16 rounded-xl mt-2">
+        <TouchableOpacity
+          className="flex items-center justify-center bg-[#22D3EE] w-4/5 h-16 rounded-xl mt-2"
+          onPress={() => {
+            useRouter.navigate('Dashboard');
+          }}
+        >
           <Text className="text-lg font-bold text-white">Sign in</Text>
         </TouchableOpacity>
 
